@@ -6,7 +6,7 @@ describe Product do
   end
 
   it { should validate_presence_of(:name) }
-  it { should validate_presence_of(:code) }
+  it { should validate_presence_of(:product_code) }
   it { should validate_presence_of(:price) }
   it { should have_many(:transactions)}
 

@@ -24,7 +24,7 @@ ActiveRecord::Schema.define(:version => 20120322163928) do
   end
 
   create_table "pricing_rules", :force => true do |t|
-    t.string   "type"
+    t.string   "discount_type"
     t.integer  "product_id"
     t.decimal  "bulk_price"
     t.integer  "bulk_threshold"
@@ -33,17 +33,17 @@ ActiveRecord::Schema.define(:version => 20120322163928) do
   end
 
   create_table "products", :force => true do |t|
-    t.string   "code"
+    t.string   "product_code"
     t.string   "name"
     t.decimal  "price"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.datetime "created_at",   :null => false
+    t.datetime "updated_at",   :null => false
   end
 
   create_table "transactions", :force => true do |t|
     t.integer  "checkout_id"
     t.integer  "product_id"
-    t.integer  "amount"
+    t.integer  "no_of_items"
     t.datetime "created_at",  :null => false
     t.datetime "updated_at",  :null => false
   end

@@ -1,6 +1,6 @@
 class CheckoutsController < ApplicationController
-  # GET /checkouts
-  # GET /checkouts.json
+  #GET /checkouts
+  #GET /checkouts.json
   def index
     @checkouts = Checkout.all
 
@@ -21,27 +21,20 @@ class CheckoutsController < ApplicationController
     end
   end
 
-  # GET /checkouts/new
-  # GET /checkouts/new.json
+  #GET /checkouts/new
+  #GET /checkouts/new.json
   def new
     @checkout = Checkout.new
+    for pricing_rule_id in params[:pricing_rules] do
+      pricing_rule = PricingRule.find(pricing_rule_id)
+      @checkout.pricing_rules << pricing_rule
+    end
 
     respond_to do |format|
       format.html # new.html.erb
       format.json { render json: @checkout }
     end
   end
-  #  def new(pricing_rules = [])
-  #  @checkout = Checkout.new
-  #  for pricing_rule in pricing_rules do
-  #    @checkout.pricing_rules << pricing_rule
-  #  end
-  #
-  #  respond_to do |format|
-  #    format.html # new.html.erb
-  #    format.json { render json: @checkout }
-  #  end
-  #end
 
   # GET /checkouts/1/edit
   def edit
@@ -92,5 +85,4 @@ class CheckoutsController < ApplicationController
     end
   end
 
-0
 end

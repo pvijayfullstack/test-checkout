@@ -52,8 +52,15 @@ describe CheckoutsController do
 
   describe "GET new" do
     it "assigns a new checkout as @checkout" do
-      get :new, {}, valid_session
+      get :new, {:pricing_rules => []}, valid_session
       assigns(:checkout).should be_a_new(Checkout)
+    end
+
+    it "associates pricing rules" do
+      @pricing_rule = FactoryGirl.create(:pricing_rule)
+      pr =[@pricing_rule.id]
+      get :new, {:pricing_rules => pr}
+      assigns(:checkout).pricing_rules.should eq([@pricing_rule])
     end
   end
 

@@ -7,7 +7,10 @@ describe Transaction do
 
   it { should validate_presence_of(:product) }
   it { should validate_presence_of(:checkout) }
+  it { should validate_presence_of(:no_of_items) }
   it { should belong_to(:product)}
   it { should belong_to(:checkout)}
+
+
 
 end

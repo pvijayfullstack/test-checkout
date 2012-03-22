@@ -8,13 +8,13 @@ class CreateCheckouts < ActiveRecord::Migration
     create_table :transactions do |t|
       t.integer :checkout_id
       t.integer :product_id
-      t.integer :amount
+      t.integer :no_of_items
 
       t.timestamps
     end
 
     create_table :products  do |t|
-      t.string :code
+      t.string :product_code
       t.string :name
       t.decimal :price
 
@@ -22,7 +22,7 @@ class CreateCheckouts < ActiveRecord::Migration
     end
 
     create_table :pricing_rules  do |t|
-      t.string :type   #BULK or BOGOG
+      t.string :discount_type   #BULK or BOGOG
       t.integer :product_id
       t.decimal :bulk_price
       t.integer :bulk_threshold
