@@ -1,0 +1,12 @@
+%p#notice= notice
+
+%h1= "Checkout ID #{@checkout.id}"
+
+%p= "TOTAL: #{@checkout.total}"
+
+
+= link_to 'Destroy', @checkout, :confirm => 'Are you sure?', :method => :delete
+\|
+= link_to 'Index', checkouts_path
+\|
+= link_to 'New Checkout', new_checkout_path

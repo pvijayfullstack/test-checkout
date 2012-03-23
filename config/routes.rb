@@ -1,5 +1,10 @@
 TestCheckout::Application.routes.draw do
-  resources :checkouts
+  resources :checkouts, :except => [:show, :edit] do
+    member do
+      get 'scan'
+      get 'total'
+    end
+  end
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
@@ -50,7 +55,7 @@ TestCheckout::Application.routes.draw do
 
   # You can have the root of your site routed with "root"
   # just remember to delete public/index.html.
-  # root :to => 'welcome#index'
+  root :to => 'checkouts#index'
 
   # See how all your routes lay out with "rake routes"
 

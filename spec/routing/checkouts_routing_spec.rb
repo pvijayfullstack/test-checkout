@@ -11,12 +11,12 @@ describe CheckoutsController do
       get("/checkouts/new").should route_to("checkouts#new")
     end
 
-    it "routes to #show" do
-      get("/checkouts/1").should route_to("checkouts#show", :id => "1")
+    it "routes to #scan" do
+      get("/checkouts/1/scan").should route_to("checkouts#scan", :id => "1")
     end
 
-    it "routes to #edit" do
-      get("/checkouts/1/edit").should route_to("checkouts#edit", :id => "1")
+    it "routes to #total" do
+      get("/checkouts/1/total").should route_to("checkouts#total", :id => "1")
     end
 
     it "routes to #create" do

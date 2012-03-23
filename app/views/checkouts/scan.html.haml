@@ -1,0 +1,9 @@
+%p#notice= notice
+
+%h1= "Checkout ID #{@checkout.id}"
+
+%p= "TODO From to add item here"
+
+= link_to 'Total', total_checkout_path(@checkout)
+\|
+= link_to 'Index', checkouts_path

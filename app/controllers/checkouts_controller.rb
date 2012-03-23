@@ -12,23 +12,24 @@ class CheckoutsController < ApplicationController
 
   # GET /checkouts/1
   # GET /checkouts/1.json
-  def show
-    @checkout = Checkout.find(params[:id])
-
-    respond_to do |format|
-      format.html # show.html.erb
-      format.json { render json: @checkout }
-    end
-  end
+  #def show
+  #  @checkout = Checkout.find(params[:id])
+  #
+  #  respond_to do |format|
+  #    format.html # show.html.erb
+  #    format.json { render json: @checkout }
+  #  end
+  #end
 
   #GET /checkouts/new
   #GET /checkouts/new.json
   def new
     @checkout = Checkout.new
-    for pricing_rule_id in params[:pricing_rules] do
-      pricing_rule = PricingRule.find(pricing_rule_id)
-      @checkout.pricing_rules << pricing_rule
-    end
+    @pricing_rules = PricingRule.all
+    #for pricing_rule_id in params[:pricing_rules] do
+    #  pricing_rule = PricingRule.find(pricing_rule_id)
+    #  @checkout.pricing_rules << pricing_rule
+    #end
 
     respond_to do |format|
       format.html # new.html.erb
@@ -37,18 +38,21 @@ class CheckoutsController < ApplicationController
   end
 
   # GET /checkouts/1/edit
-  def edit
-    @checkout = Checkout.find(params[:id])
-  end
+  #def edit
+  #  @checkout = Checkout.find(params[:id])
+  #end
 
   # POST /checkouts
   # POST /checkouts.json
   def create
     @checkout = Checkout.new(params[:checkout])
-
+    #for pricing_rule_id in params[:pricing_rules] do
+    #  pricing_rule = PricingRule.find(pricing_rule_id)
+    #  @checkout.pricing_rules << pricing_rule
+    #end
     respond_to do |format|
       if @checkout.save
-        format.html { redirect_to @checkout, notice: 'Checkout was successfully created.' }
+        format.html { redirect_to scan_checkout_path(@checkout), notice: 'Checkout was successfully created.' }
         format.json { render json: @checkout, status: :created, location: @checkout }
       else
         format.html { render action: "new" }
@@ -64,10 +68,10 @@ class CheckoutsController < ApplicationController
 
     respond_to do |format|
       if @checkout.update_attributes(params[:checkout])
-        format.html { redirect_to @checkout, notice: 'Checkout was successfully updated.' }
+        format.html { redirect_to scan_checkout_path(@checkout), notice: 'Item accepted.' }
         format.json { head :no_content }
       else
-        format.html { render action: "edit" }
+        format.html { render action: "scan" }
         format.json { render json: @checkout.errors, status: :unprocessable_entity }
       end
     end
@@ -83,6 +87,14 @@ class CheckoutsController < ApplicationController
       format.html { redirect_to checkouts_url }
       format.json { head :no_content }
     end
+  end
+
+  def scan
+    @checkout = Checkout.find(params[:id])
+  end
+
+  def total
+    @checkout = Checkout.find(params[:id])
   end
 
 end

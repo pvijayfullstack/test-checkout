@@ -5,11 +5,13 @@
     %th
     %th
     %th
+    %th
 
   - @checkouts.each do |checkout|
     %tr
-      %td= link_to 'Show', checkout
-      %td= link_to 'Edit', edit_checkout_path(checkout)
+      %td= checkout.id
+      %td= link_to 'Scan', scan_checkout_path(checkout)
+      %td= link_to 'Total', total_checkout_path(checkout)
       %td= link_to 'Destroy', checkout, :confirm => 'Are you sure?', :method => :delete
 
 %br
