@@ -2,15 +2,20 @@
 
 %h1= "Checkout ID #{@checkout.id}"
 
+%h2 Applied pricing rules
 %ul
-- for transaction in @checkout.transactions do
-  %li
-    = "#{transaction.no_of_items} #{transaction.product.name}"
-
-
+  - for pricing_rule in @checkout.pricing_rules do
+    %li= pricing_rule.description.html_safe
+%h2 Transactions
+- if @checkout.transactions.length > 0
+  %ul
+    - for transaction in @checkout.transactions do
+      %li= "#{transaction.no_of_items} #{transaction.product.name}"
+-else
+  %p None - choose from the products below
 %h2= link_to 'Total', total_checkout_path(@checkout)
 
-%h1 Choose from available Products
+%h1 Available Products
 
 %table
   %tr
@@ -22,4 +27,5 @@
     = render "add_item_form", :product => product
 
 
-= link_to 'Index', checkouts_path
+%p= link_to 'Index', checkouts_path
+

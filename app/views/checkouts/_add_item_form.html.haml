@@ -3,11 +3,6 @@
   %td= product.name
   %td= product.price
   %td
-    -#= form_tag transactions_path, :method => 'post'
-    -#  = hidden_field_tag :checkout_id, :value => @checkout.id
-    -#  = hidden_field_tag :product_id, :value => product.id
-    -#  = hidden_field_tag :no_of_items, :value => 1
-    -#  = submit_tag 'Add'
     = form_for @transaction do |f|
       .field
         = f.hidden_field :checkout_id, :value => @checkout.id

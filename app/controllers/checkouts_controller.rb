@@ -46,6 +46,7 @@ class CheckoutsController < ApplicationController
   # POST /checkouts.json
   def create
     @checkout = Checkout.new(params[:checkout])
+
     #for pricing_rule_id in params[:pricing_rules] do
     #  pricing_rule = PricingRule.find(pricing_rule_id)
     #  @checkout.pricing_rules << pricing_rule

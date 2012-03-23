@@ -8,4 +8,11 @@ class PricingRule < ActiveRecord::Base
   belongs_to :product
   has_and_belongs_to_many :checkouts
 
+  def description
+    if self.discount_type == "bulk"
+      "#{product.name} #{discount_type}(#{bulk_threshold}) at #{bulk_price}"
+    else
+      "#{product.name} #{discount_type}"
+    end
+  end
 end

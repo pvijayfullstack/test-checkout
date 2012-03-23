@@ -5,11 +5,9 @@
       %ul
         - @checkout.errors.full_messages.each do |msg|
           %li= msg
-  %p= "TODO add form with pricing rules here"
-  -#- for pricing_rule in @pricing_rules do
-  -#  .field
-  -#    = "#{pricing_rule.discount_type} #{pricing_rule.product.name} #{pricing_rule.bulk_price} #{pricing_rule.bulk_threshold}"
-  -#    = f.label "pricing_rule", pricing_rule.discount_type
-  -#    = f.check_box "pricing_rule"
+  %p= "TODO add form with pricing rules heres"
+
+  = f.collection_select :pricing_rule_ids, @pricing_rules, :id, :description, {}, { :selected => @checkout.pricing_rule_ids, :multiple => true }
+
   .actions
     = f.submit 'Save'
