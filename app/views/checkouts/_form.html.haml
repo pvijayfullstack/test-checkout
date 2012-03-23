@@ -5,9 +5,8 @@
       %ul
         - @checkout.errors.full_messages.each do |msg|
           %li= msg
-  %p= "TODO add form with pricing rules heres"
-
+  %p Select the pricing rules for this checkout:
   = f.collection_select :pricing_rule_ids, @pricing_rules, :id, :description, {}, { :selected => @checkout.pricing_rule_ids, :multiple => true }
-
+  %p TODO add new if not present above
   .actions
     = f.submit 'Save'
