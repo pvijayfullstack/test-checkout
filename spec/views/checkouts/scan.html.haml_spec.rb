@@ -2,12 +2,18 @@ require 'spec_helper'
 
 describe "checkouts/scan" do
   before(:each) do
-    @checkout = assign(:checkout, stub_model(Checkout))
+    @checkout = FactoryGirl.create(:checkout)
+    assign(:checkout, @checkout)
+
+    @product1 = FactoryGirl.build(:product)
+    @product2 = FactoryGirl.build(:product)
+    assign(:products, [@product1, @product2])
+
+    @transaction = FactoryGirl.build(:transaction)
   end
 
   it "renders" do
     render
-    # Run the generator again with the --webrat flag if you want to use webrat matchers
-    #assert_select "form", :action => checkouts_path(@checkout), :method => "post" do
+    assert_select "form", :action => transactions_path(@transaction), :method => "post"
   end
 end

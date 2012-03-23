@@ -22,22 +22,22 @@ describe Checkout do
     end
   end
 
-  describe "Checkout#scan" do
-    before :each do
-      @item = FactoryGirl.build(:product)
-      @checkout = FactoryGirl.build(:checkout)
-    end
-
-    it "creates a transaction" do
-      @transaction = FactoryGirl.build(:transaction, :product => @item, :checkout => @checkout)
-      Transaction.should_receive(:create).and_return(true)
-      @checkout.scan(@item).should eq(true)
-    end
-
-    it "increments the number of items if a transaction for the same product exists" do
-      @existing_transaction = FactoryGirl.create(:transaction, :product => @item, :checkout => @checkout, :no_of_items => 1)
-
-      @checkout.scan(@item).should eq(true)
-    end
-  end
+  #describe "Checkout#scan" do
+  #  before :each do
+  #    @item = FactoryGirl.build(:product)
+  #    @checkout = FactoryGirl.build(:checkout)
+  #  end
+  #
+  #  it "creates a transaction" do
+  #    @transaction = FactoryGirl.build(:transaction, :product => @item, :checkout => @checkout)
+  #    Transaction.should_receive(:create).and_return(true)
+  #    @checkout.scan(@item).should eq(true)
+  #  end
+  #
+  #  it "increments the number of items if a transaction for the same product exists" do
+  #    @existing_transaction = FactoryGirl.create(:transaction, :product => @item, :checkout => @checkout, :no_of_items => 1)
+  #
+  #    @checkout.scan(@item).should eq(true)
+  #  end
+  #end
 end

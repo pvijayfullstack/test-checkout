@@ -8,7 +8,6 @@ describe "checkouts/new" do
   it "renders new checkout form" do
     render
 
-    # Run the generator again with the --webrat flag if you want to use webrat matchers
     assert_select "form", :action => checkouts_path, :method => "post" do
     end
   end

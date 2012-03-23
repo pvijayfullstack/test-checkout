@@ -2,8 +2,24 @@
 
 %h1= "Checkout ID #{@checkout.id}"
 
-%p= "TODO From to add item here"
+%ul
+- for transaction in @checkout.transactions do
+  %li
+    = "#{transaction.no_of_items} #{transaction.product.name}"
 
-= link_to 'Total', total_checkout_path(@checkout)
-\|
+
+%h2= link_to 'Total', total_checkout_path(@checkout)
+
+%h1 Choose from available Products
+
+%table
+  %tr
+    %th Product Code
+    %th Name
+    %th Price
+    %th
+  - for product in @products do
+    = render "add_item_form", :product => product
+
+
 = link_to 'Index', checkouts_path

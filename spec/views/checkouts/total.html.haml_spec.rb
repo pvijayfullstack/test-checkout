@@ -7,7 +7,5 @@ describe "checkouts/total" do
 
   it "renders the total" do
     render
-    # TODO tighten up
-    # Run the generator again with the --webrat flag if you want to use webrat matchers
   end
 end

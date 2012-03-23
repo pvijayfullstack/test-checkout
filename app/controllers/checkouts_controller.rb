@@ -91,6 +91,8 @@ class CheckoutsController < ApplicationController
 
   def scan
     @checkout = Checkout.find(params[:id])
+    @products = Product.all
+    @transaction = Transaction.new
   end
 
   def total

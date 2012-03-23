@@ -1,4 +1,5 @@
 TestCheckout::Application.routes.draw do
+
   resources :checkouts, :except => [:show, :edit] do
     member do
       get 'scan'
@@ -6,6 +7,7 @@ TestCheckout::Application.routes.draw do
     end
   end
 
+  resources :transactions, :only => [:create]
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
