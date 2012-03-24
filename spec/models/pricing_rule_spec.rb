@@ -18,4 +18,8 @@ describe PricingRule do
   end
 
   it { should_not allow_value("other").for(:discount_type) }
+
+  describe "Checkout#description" do
+    pending "add some examples to (or delete) #{__FILE__}"
+  end
 end

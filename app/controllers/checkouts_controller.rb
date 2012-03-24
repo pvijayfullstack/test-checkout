@@ -10,26 +10,11 @@ class CheckoutsController < ApplicationController
     end
   end
 
-  # GET /checkouts/1
-  # GET /checkouts/1.json
-  #def show
-  #  @checkout = Checkout.find(params[:id])
-  #
-  #  respond_to do |format|
-  #    format.html # show.html.erb
-  #    format.json { render json: @checkout }
-  #  end
-  #end
-
   #GET /checkouts/new
   #GET /checkouts/new.json
   def new
     @checkout = Checkout.new
     @pricing_rules = PricingRule.all
-    #for pricing_rule_id in params[:pricing_rules] do
-    #  pricing_rule = PricingRule.find(pricing_rule_id)
-    #  @checkout.pricing_rules << pricing_rule
-    #end
 
     respond_to do |format|
       format.html # new.html.erb
@@ -37,20 +22,11 @@ class CheckoutsController < ApplicationController
     end
   end
 
-  # GET /checkouts/1/edit
-  #def edit
-  #  @checkout = Checkout.find(params[:id])
-  #end
-
   # POST /checkouts
   # POST /checkouts.json
   def create
     @checkout = Checkout.new(params[:checkout])
 
-    #for pricing_rule_id in params[:pricing_rules] do
-    #  pricing_rule = PricingRule.find(pricing_rule_id)
-    #  @checkout.pricing_rules << pricing_rule
-    #end
     respond_to do |format|
       if @checkout.save
         format.html { redirect_to scan_checkout_path(@checkout), notice: 'Checkout was successfully created.' }

@@ -11,6 +11,7 @@ describe Transaction do
   it { should belong_to(:product)}
   it { should belong_to(:checkout)}
 
-
-
+  describe "Transaction#find_by_product" do
+    pending "add some examples to (or delete) #{__FILE__}"
+  end
 end

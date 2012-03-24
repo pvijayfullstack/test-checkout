@@ -1,8 +1,9 @@
 %p#notice= notice
 
-%h1= "Checkout ID #{@checkout.id}"
+= render "receipt_content"
 
-%p= "TOTAL: #{@checkout.total}"
+
+%h2= "TOTAL: #{@checkout.total}"
 
 
 = link_to 'Destroy', @checkout, :confirm => 'Are you sure?', :method => :delete

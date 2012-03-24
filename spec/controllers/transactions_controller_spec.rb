@@ -4,21 +4,13 @@ describe TransactionsController do
 
   describe "POST create" do
     before :each do
-      #@test_checkout = FactoryGirl.create(:checkout)
-      #@test_transaction = FactoryGirl.build(:transaction, :checkout => @test_checkout)
+
       request.env["HTTP_REFERER"] = "where_i_came_from"
     end
     describe "with valid params" do
-      #it "creates a new Transaction" do
-      #  expect {
-      #    post :create, {:transaction => Factory.attributes_for(:transaction)}
-      #  }.to change(Transaction, :count).by(1)
-      #end
-
       it "assigns a newly created transaction as @transaction" do
         post :create, {:transaction => Factory.attributes_for(:transaction)}
         assigns(:transaction).should be_a(Transaction)
-        #assigns(:transaction).should be_persisted
       end
 
       it "redirects to the created transaction" do
