@@ -3,7 +3,4 @@ class Transaction < ActiveRecord::Base
   belongs_to :checkout
   belongs_to :product
 
-  def self.find_by_product(product)
-     Transaction.where(:product_id => product.id).first
-  end
 end

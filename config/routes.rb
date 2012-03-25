@@ -1,6 +1,6 @@
 TestCheckout::Application.routes.draw do
 
-  resources :checkouts, :except => [:show, :edit] do
+  resources :checkouts, :except => [:show, :edit, :update] do
     member do
       get 'scan'
       get 'total'

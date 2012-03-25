@@ -38,22 +38,6 @@ class CheckoutsController < ApplicationController
     end
   end
 
-  # PUT /checkouts/1
-  # PUT /checkouts/1.json
-  def update
-    @checkout = Checkout.find(params[:id])
-
-    respond_to do |format|
-      if @checkout.update_attributes(params[:checkout])
-        format.html { redirect_to scan_checkout_path(@checkout), notice: 'Item accepted.' }
-        format.json { head :no_content }
-      else
-        format.html { render action: "scan" }
-        format.json { render json: @checkout.errors, status: :unprocessable_entity }
-      end
-    end
-  end
-
   # DELETE /checkouts/1
   # DELETE /checkouts/1.json
   def destroy

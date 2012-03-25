@@ -23,10 +23,6 @@ describe CheckoutsController do
       post("/checkouts").should route_to("checkouts#create")
     end
 
-    it "routes to #update" do
-      put("/checkouts/1").should route_to("checkouts#update", :id => "1")
-    end
-
     it "routes to #destroy" do
       delete("/checkouts/1").should route_to("checkouts#destroy", :id => "1")
     end
